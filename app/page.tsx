@@ -9,11 +9,14 @@ export default function DashboardPage() {
   // 백엔드(4000번 포트)에서 데이터를 가져오는 함수
   const fetchStores = async () => {
     try {
-      const res = await fetch('http://localhost:4000/store');
+      // ✅ localhost:4000 대신 환경 변수 사용
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${baseUrl}/store`);
+      
       const data = await res.json();
       setStores(data);
     } catch (error) {
-      console.error("데이터를 가져오는 중 오류 발생:", error);
+      console.error("데이터 가져오는 중 오류 발생:", error);
     } finally {
       setLoading(false);
     }
