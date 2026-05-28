@@ -12,7 +12,7 @@ export default function DashboardPage() {
       // ✅ localhost:4000 대신 환경 변수 사용
       const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
       const res = await fetch(`${baseUrl}/store`);
-      
+
       const data = await res.json();
       setStores(data);
     } catch (error) {
@@ -31,7 +31,7 @@ export default function DashboardPage() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-6">가맹점 운영 현황</h1>
-      
+
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200">
           <thead className="bg-gray-100">

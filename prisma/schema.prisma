@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- Franchise ---
+model Franchise {
+  id        String   @id @default(cuid())
+  name      String
+  status    String   @default("PENDING")
+  code      String   @unique
+  ownerName String?
+  openedAt  DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
